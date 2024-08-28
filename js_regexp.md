@@ -301,7 +301,7 @@ This chapter introduced how to define RegExp objects and use them with the `test
 > let s2 = 'one plus tw0 is not three'
 > let s3 = 'TRUSTWORTHY'
 
-> const pat1 =      // add your solution here
+> const pat1 = /two/i
 
 > pat1.test(s1)
 < true
@@ -316,7 +316,7 @@ This chapter introduced how to define RegExp objects and use them with the `test
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w))       // add your solution here
+> items.filter(w => !/e/.test(w))
 < ['goal', 'sit']
 ```
 
@@ -325,7 +325,7 @@ This chapter introduced how to define RegExp objects and use them with the `test
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
-> ip.replace()       // add your solution here
+> ip.replace(/5/, 'five')
 < 'They ate five apples and 5 oranges'
 ```
 
@@ -334,7 +334,7 @@ This chapter introduced how to define RegExp objects and use them with the `test
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
-> ip.replace()      // add your solution here
+> ip.replace(/5/g, 'five')
 < 'They ate five apples and five oranges'
 ```
 
@@ -343,7 +343,7 @@ This chapter introduced how to define RegExp objects and use them with the `test
 ```js
 > let ip = 'This note should not be NoTeD'
 
-> ip.replace()     // add your solution here
+> ip.replace(/note/ig, "X")
 < 'This X should not be XD'
 ```
 
@@ -357,10 +357,10 @@ guava 42
 onion 31
 water 10`
 
-> const num =       // add your solution here
+> const num = '2'
 
 > console.log(purchases.split('\n')
-                       .filter(e => test(e))       // add your solution here
+                       .filter(e => !num.test(e))
                        .join('\n'))
 < items qty
   mango 50
@@ -375,7 +375,7 @@ water 10`
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w) || test(w))     // add your solution here
+> items.filter(w => /a/.test(w) || /w/.test(w))
 < ['goal', 'new', 'eat']
 ```
 
@@ -384,7 +384,7 @@ water 10`
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w) && test(w))     // add your solution here
+> items.filter(w => /e/.test(w) && /n/.test(w))
 < ['new', 'dinner']
 ```
 
@@ -393,7 +393,7 @@ water 10`
 ```js
 > let ip = 'start address: 0xA0, func1 address: 0xC0'
 
-> ip.replace()        // add your solution here
+> ip.replace(/0xA0/, '0x7F').replace(/0xC0/, '0x1F')
 < 'start address: 0x7F, func1 address: 0x1F'
 ```
 
