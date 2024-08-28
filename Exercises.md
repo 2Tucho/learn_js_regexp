@@ -123,8 +123,8 @@ water 10`
 > let str3 = 'the2 cats'
 > let str4 = 'switch on the light'
 
-> const pat1 =      // add your solution here
-> const pat2 =      // add your solution here
+> const pat1 = const pat1 = /\bis\b/
+> const pat2 = const pat1 = /\bthe\b/
 
 > pat1.test(str1) || pat2.test(str1)
 < true
@@ -141,7 +141,7 @@ water 10`
 ```js
 > let ip = 'bred red spread credible red;'
 
-> ip.replace()       // add your solution here
+> ip.replace(/\bred\b/, 'brown')
 < 'bred brown spread credible brown;'
 ```
 
@@ -150,7 +150,7 @@ water 10`
 ```js
 > let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
-> items.filter(e => test(e))       // add your solution here
+> items.filter(e => /\B42\B/.test(e))
 < ['hi42bye', 'nice1423', 'cool_42a']
 ```
 
@@ -159,7 +159,7 @@ water 10`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> items.filter(e => test(e) || test(e))        // add your solution here
+> items.filter(e => /^den/.test(e) || /ly$/.test(e)) 
 < ['lovely', '2 lonely', 'dent']
 ```
 
@@ -173,7 +173,7 @@ wall mall ball fall
 mallet wallet malls
 mall:call:ball:pall`
 
-> console.log(para.replace())        // add your solution here
+> console.log(para.replace(/^mall\b/gm, '1234'))
 < (mall) call ball pall
   ball fall wall tall
   1234 call ball pall
@@ -187,7 +187,7 @@ mall:call:ball:pall`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-> items.filter(e => test(e) || test(e))      // add your solution here
+> items.filter(e => /^den/m.test(e) || /ly$/m.test(e)) 
 < ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
@@ -196,7 +196,7 @@ mall:call:ball:pall`
 ```js
 > let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
 
-> items.filter(e => test(e))     // add your solution here
+> items.filter(e => /^12\nthree$/i.test(e))
 < ['12\nThree', '12\nthree']
 ```
 
@@ -205,7 +205,7 @@ mall:call:ball:pall`
 ```js
 > let items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
 
-> items.map(w => w.replace())        // add your solution here
+> items.map(w => w.replace(/^hand\B/g, 'X'))
 < ['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
 ```
 
@@ -214,14 +214,14 @@ mall:call:ball:pall`
 ```js
 > let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-> items.filter(w => test(w)).map(w => w.replace())        // add your solution here
+> items.filter(w => /^h/.test(w)).map(w => w.replace(/e/, 'X'))
 < ['handXd', 'hand', 'handy', 'handlX', 'hand-2']
 ```
 
 **10)** Why does the following code show `false` instead of `true`?
 
 ```js
-> /end$/.test('bend it\nand send\n')
+> /end$/.test('bend it\nand send\n') // Lacks de 'm' to check all the lines
 < false
 ```
 
