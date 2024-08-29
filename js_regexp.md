@@ -842,7 +842,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> items.filter()        // add your solution here
+> items.filter(e => /^den|ly$/.test(e))
 < ['lovely', '2 lonely', 'dent']
 ```
 
@@ -851,7 +851,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-> items.filter()        // add your solution here
+> items.filter(e => /^den|ly$/m.test(e))
 < ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
@@ -861,7 +861,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 > let s1 = 'creed refuse removed read'
 > let s2 = 'refused reed redo received'
 
-> const pat1 =      // add your solution here
+> const pat1 = /re(moved|ed|ceived|fused)/g
 
 > s1.replace(pat1, 'X')
 < 'cX refuse X read'
@@ -875,7 +875,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 > let str1 = 'plate full of slate'
 > let str2 = "slated for later, don't be late"
 
-> const pat2 =      // add your solution here
+> const pat2 = /later|slated|late/g
 
 > str1.replace(pat2, 'A')
 < 'pA full of sA'
