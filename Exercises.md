@@ -285,10 +285,10 @@ mall:call:ball:pall`
 > let str1 = '(9-2)*5+qty/3-(9-2)*7'
 > let str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
-> const pat1 =      // add your solution here
-> str1.replace()        // add your solution here
+> const pat1 = /\(9-2\)\*/
+> str1.replace(pat1, '3')
 < '35+qty/3-(9-2)*7'
-> str2.replace()        // add your solution here
+> str2.replace(pat1, '3')
 < '(qty+4)/2-35+pq/4'
 ```
 
@@ -299,13 +299,13 @@ mall:call:ball:pall`
 > let s2 = '(4)\\|42 - (4)\\|3'
 > let s3 = 'two - (4)\\|\n'
 
-> const pat2 =      // add your solution here
+> const pat2 = /^\(4\)\\\||\(4\)\\\|$/
 
-> s1.replace()      // add your solution here
+> s1.replace(pat2, '2') 
 < '2.3/(4)\\|6 fig 5.3-2'
-> s2.replace()      // add your solution here
+> s2.replace(pat2, '2') 
 < '242 - (4)\\|3'
-> s3.replace()      // add your solution here
+> s3.replace(pat2, '2')   
 < 'two - (4)\\|\n'
 ```
 
@@ -314,8 +314,15 @@ mall:call:ball:pall`
 ```js
 > let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
 
-// add your solution here
-> const pat3 =      // add your solution here
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  }
+
+function joinRegExp(arr) {
+    return arr.map(w => escapeRegExp(w)).join('|')
+  }
+
+> const pat3 = new RegExp(joinRegExp(items), 'g')
 
 > '0a.bcd'.replace(pat3, 'X')
 < '0Xcd'
@@ -330,7 +337,7 @@ mall:call:ball:pall`
 ```js
 > let ip = '123\b456'
 
-> ip.replace()      // add your solution here
+> ip.replace(/\x08/, ' ')
 < '123 456'
 ```
 
@@ -339,7 +346,7 @@ mall:call:ball:pall`
 ```js
 > let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
 
-> ip.replace()      // add your solution here
+> ip.replace(/\\e/g, 'e')
 < 'there are common aspects among the alternations'
 ```
 
